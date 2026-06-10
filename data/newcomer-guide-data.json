@@ -1,0 +1,581 @@
+{
+  "meta": {
+    "title": "存客运营新人指导书",
+    "version": "V1.0",
+    "department": "产品运营部",
+    "updateDate": "2023-06-01",
+    "description": "本手册涵盖业务需求调研、业务需求建设、业务效果优化、经验沉淀四大模块，指导产品运营人员快速掌握存客运营方法和技巧。"
+  },
+
+  "sections": [
+    {
+      "id": "overview",
+      "title": "前言与概述",
+      "icon": "📖",
+      "type": "intro",
+      "subsections": [
+        {
+          "id": "what-is",
+          "title": "什么是存量客户运营",
+          "type": "card",
+          "content": "银行存量客户是指银行已有的客户群体。调查显示，银行对存量客户进行挖掘经营的<strong>转化成本远低于获新客的成本</strong>。存量客户具有基数大、信息完善度好、维系运营方便等特征，具有较高的潜力挖掘价值。",
+          "highlights": [
+            { "icon": "📉", "text": "转化成本低" },
+            { "icon": "📊", "text": "基数大、信息完善" },
+            { "icon": "💡", "text": "潜力挖掘价值高" }
+          ]
+        },
+        {
+          "id": "scenarios",
+          "title": "常见存客经营场景",
+          "type": "interactive-table",
+          "columns": ["场景", "说明"],
+          "data": [
+            { "scene": "手机银行促活", "desc": "通过活动权益推送激发用户登录手机银行的意愿和次数，让"流量"转变成"留量"" },
+            { "scene": "资产提升", "desc": "通过系列手段提升客户在银行的资产持有量（活期、定期、基金、理财、保险等）" },
+            { "scene": "信用卡经营", "desc": "包括信用卡获新客、促激活、分期等场景" },
+            { "scene": "贷款营销", "desc": "促授信、已授信促提款、已提款促提升等场景" },
+            { "scene": "催收", "desc": "根据贷款到期时间，通过短信、外呼、企微等方式进行催收提醒" },
+            { "scene": "业务提醒", "desc": "定期到期提醒等，维护客户权益，减少客诉" }
+          ]
+        },
+        {
+          "id": "process-flow",
+          "title": "存客运营全流程",
+          "type": "flowchart",
+          "interactive": true,
+          "steps": [
+            { "id": "s1", "name": "需求调研", "phase": "phase1" },
+            { "id": "s2", "name": "客筛范围圈定", "phase": "phase2" },
+            { "id": "s3", "name": "交互方案设计", "phase": "phase3" },
+            { "id": "s4", "name": "机器人搭建", "phase": "phase4" },
+            { "id": "s5", "name": "调优与上线", "phase": "phase5" },
+            { "id": "s6", "name": "呼前数据处理", "phase": "phase6" },
+            { "id": "s7", "name": "外呼执行", "phase": "phase7" },
+            { "id": "s8", "name": "数据分析与迭代优化", "phase": "phase8" }
+          ]
+        }
+      ],
+      "progress": { "weight": 5 }
+    },
+
+    {
+      "id": "phase1",
+      "title": "一、需求调研",
+      "icon": "🔍",
+      "type": "guide",
+      "subsections": [
+        {
+          "id": "step1-1",
+          "title": "1. 明确客户目标",
+          "type": "expandable",
+          "content": "与客户充分沟通，了解推广目标和预期效果，再制定对应的运营策略。以手机银行促活为例，需了解月活/年活目标，再拆分为细项指标执行。",
+          "checklist": [
+            "已确认推广目标",
+            "已确认预期效果指标",
+            "已拆分子目标"
+          ]
+        },
+        {
+          "id": "step1-2",
+          "title": "2. 调查当前业务指标",
+          "type": "interactive-form",
+          "description": "了解当前业务状态的关键指标",
+          "fields": [
+            { "name": "客群规模", "key": "customerScale", "placeholder": "省行客户总数、手机银行客户数、各资产等级分布" },
+            { "name": "外呼总量", "key": "callVolume", "placeholder": "日均/月均呼叫量" },
+            { "name": "外呼频率", "key": "callFrequency", "placeholder": "当前触达频率（30天/14天）" },
+            { "name": "消保流程", "key": "consumerProtection", "placeholder": "审核流程和平均耗时" },
+            { "name": "短信兜底", "key": "smsBackup", "placeholder": "是否具备短信同步发送功能" }
+          ]
+        },
+        {
+          "id": "step1-3",
+          "title": "3. 了解客户过往营销内容与效果",
+          "type": "card",
+          "content": "调研维度包括：往期活动参与人数规模/途径/频次/时间/响应速度；客户对营销活动的反馈和评价；营销活动效果（销售额、转化率等指标变化）；同业竞品策略与权益类型。"
+        },
+        {
+          "id": "step1-4",
+          "title": "4. 了解活动内容及规则",
+          "type": "checklist-card",
+          "items": [
+            "活动时间与截止日期",
+            "准入门槛",
+            "参与方式（线上/线下）",
+            "活动达标规则",
+            "权益内容与发放方式",
+            "转化效果统计方式",
+            "场景用户衍生问答FAQ"
+          ]
+        },
+        {
+          "id": "step1-5",
+          "title": "5. 讨论客筛规则",
+          "type": "card",
+          "content": "根据活动目标和规则圈定目标客群。如社保卡客群圈定事业单位临近退休人员，手机促活类根据客户方已有用户标签推送对应活动。"
+        },
+        {
+          "id": "step1-6",
+          "title": "6. 确定指标统计口径",
+          "type": "important-box",
+          "level": "important",
+          "items": [
+            "意向人数判定标准（明确表示肯定 vs 听完活动介绍）",
+            "意向率 = 意向人数/接通人数 还是 /客群人数",
+            "有效触达率判定（听完开场白 vs 听到活动介绍）",
+            "转化人数标准、转化率统计口径、转化金额计算方法",
+            "指标统计周期（当天/T+3/月底/30天）"
+          ],
+          "note": "需书面确认的关键口径"
+        },
+        {
+          "id": "step1-7",
+          "title": "7. 明确对照组设置规则",
+          "type": "principles",
+          "principles": [
+            { "name": "样本随机", "desc": "随机分组保证相似度" },
+            { "name": "保持纯净", "desc": "对照组不被外呼触达" },
+            { "name": "样本量充足", "desc": "建议对照组与外呼组1:1，最低不低于50%" },
+            { "name": "对比方式客观", "desc": "选取绝对值或增长率对比" }
+          ]
+        },
+        {
+          "id": "step1-8",
+          "title": "8. 明确呼叫策略",
+          "type": "card",
+          "content": "外呼时段、触客频率（30天/14天/三个月一次）、重呼策略（是否重呼、次数、间隔）、黑名单策略（投诉/反感处理流程和期限）。"
+        },
+        {
+          "id": "step1-9",
+          "title": "9. 明确名单处理流程",
+          "type": "card",
+          "content": "数据组取数系统、数据时效（T+0/T+1）、清理耗时、传输途径（邮箱/FTP）、预处理需求（MAX值取数、多音字修正、参数整合）、白名单预埋需求与耗时。"
+        }
+      ],
+      "progress": { "weight": 15 }
+    },
+
+    {
+      "id": "phase2",
+      "title": "二、客筛范围圈定",
+      "icon": "🎯",
+      "type": "guide",
+      "subsections": [
+        {
+          "id": "step2-1",
+          "title": "1. 获取客筛规则，圈定外呼客群",
+          "type": "card",
+          "content": "通过SQL规则筛数（另有AI营销平台模型筛数）。手机促活类以登录频率、消费偏好为主要规则；资产提升类以资产状况、交易流水为主要规则。"
+        },
+        {
+          "id": "step2-rules",
+          "title": "常见客筛规则参考",
+          "type": "interactive-table",
+          "columns": ["业务种类", "典型客群", "核心规则要点"],
+          "data": [
+            { "type": "资产提升", "customers": "临界/高余额宝/高代发低资产/同名跨行转账等", "rules": "手机银行近3月登录、全量金融资产≤20万、年龄≤70岁" },
+            { "type": "手机银行促活", "customers": "低频/中频/高频", "rules": "按近6月登录次数分层，去除30天内已外呼、本月自然月活客户" },
+            { "type": "贷款营销", "customers": "中银E贷/好客贷", "rules": "房贷客户、月日均20万以下、信用卡消费额上月>3000元等" },
+            { "type": "信用卡", "customers": "促活新客户/社保卡换代", "rules": "21年办卡正常状态未激活、男57-60女52-55即将退休" }
+          ]
+        },
+        {
+          "id": "step2-2",
+          "title": "2. 外呼客群去黑排重",
+          "type": "numbered-list",
+          "items": [
+            "时间维度排重（30天/14天仅外呼一次）",
+            "渠道维度排重（全渠道含人工+智能语音）",
+            "投诉标签客户批量拉黑处理",
+            "已投诉客户及时黑名单添加"
+          ]
+        },
+        {
+          "id": "step2-3",
+          "title": "3. 依照规则进行客群初筛",
+          "type": "card",
+          "content": "完成排重后确定外呼名单数。若名单数大于产能，动态调整客筛策略达成符合需求的名单数。"
+        }
+      ],
+      "progress": { "weight": 10 }
+    },
+
+    {
+      "id": "phase3",
+      "title": "三、交互方案设计",
+      "icon": "✏️",
+      "type": "guide",
+      "intro": "设计原则："流程有逻辑，话术讲人话，产品有人设"。",
+      "subsections": [
+        {
+          "id": "step3-flow",
+          "title": "工作步骤",
+          "type": "mini-flow",
+          "steps": ["需求调研", "交互方案输出", "流程评审"]
+        },
+        {
+          "id": "step3-1",
+          "title": "1. 流程设计",
+          "type": "card",
+          "content": "完整营销流程三个模块：<strong>客户身份确认</strong>（明确来电身份+确认接听人，增强信任感）→ <strong>开场白</strong>（简明描述利好内容引发兴趣，首层意向筛选）→ <strong>活动介绍</strong>（说明参与方式与条件，精筛意向确认）。小活动可跳过身份确认以缩短流程提升线路效率。"
+        },
+        {
+          "id": "step3-2",
+          "title": "2. 话术共创 — 交互设计文档",
+          "type": "card",
+          "content": "由4个步骤组成：确定流程节点名称 → 节点提示音文本设计 → 意图出口节点设计（流程出口）及拓展 → 跳转节点名称。"
+        },
+        {
+          "id": "step3-knowledge",
+          "title": "知识点分类要点",
+          "type": "tip-box",
+          "content": "即使意图同为"肯定"，也需细化分类（如"是的/对的"归为"肯定1"、"是我自己操作的啊"归为"亲自操作"），避免语义缠绕问题。"
+        },
+        {
+          "id": "step3-faq",
+          "title": "需覆盖三类FAQ",
+          "type": "tags",
+          "tags": [
+            { "label": "流程相关", "desc": "打错了、不方便、抱怨投诉等" },
+            { "label": "业务相关", "desc": "场景特定FAQ" },
+            { "label": "闲聊相关", "desc": "天气、机器人身份等" }
+          ]
+        },
+        {
+          "id": "step3-3",
+          "title": "3. 短信内容设计",
+          "type": "card",
+          "content": "三个部分：活动名称 + 活动内容 + 参与路径。需严格确认言简意赅，遵守局点字数要求，推动添加活动直达短链。"
+        },
+        {
+          "id": "step3-4",
+          "title": "4. 话术评审与消保审核",
+          "type": "card",
+          "content": "评审分内部（项目组）和外部（客户侧业务部门）。",
+          "checklist": [
+            "合理包装，不夸大活动内容",
+            "智能语音不涉及、不宣传具体产品（尤其理财类风险产品）",
+            "不偷换概念（如"微信立减金"≠"微信现金红包"）",
+            "涉及权益金额必须描述准确"
+          ]
+        },
+        {
+          "id": "step3-sensitive",
+          "title": "银行消保敏感词汇",
+          "type": "warning-box",
+          "level": "warning",
+          "categories": [
+            { "name": "收益承诺类", "words": "保本、收益高、高利率、风险低" },
+            { "name": "隐私安全类", "words": "客户资产金额、身份证信息" },
+            { "name": "具体产品推荐", "words": "推荐购买XX产品" }
+          ]
+        }
+      ],
+      "progress": { "weight": 15 }
+    },
+
+    {
+      "id": "phase4",
+      "title": "四、机器人搭建",
+      "icon": "🤖",
+      "type": "guide",
+      "intro": "三部分工作：知识库建库、流程配置、提示音录制。搭建前可参考运营案例货架（截止2023年6月已积累<strong>13大类约150个运营案例</strong>）。",
+      "subsections": [
+        {
+          "id": "step4-1",
+          "title": "1. 知识库建库（讯飞言知）",
+          "type": "numbered-steps",
+          "steps": [
+            { "step": "Step1", "title": "新建BOT" },
+            { "step": "Step2", "title": "配置技能（词集+意图）" },
+            { "step": "Step3", "title": "发布BOT到渠道" }
+          ]
+        },
+        {
+          "id": "step4-knowledge-detail",
+          "title": "知识库配置详情",
+          "type": "card-list",
+          "items": [
+            { "title": "词集", "desc": "提高识别效果，如催收场景中"愿意还款"词做同义词"还钱、还款等"" },
+            { "title": "意图", "desc": "需填写意图名称、扩展问，意图类型选"任务意图"，配置动作+业务关键词" },
+            { "title": "批量导入", "desc": "支持模板下载及批量导入，发布后流程配置中即可引用知识点" }
+          ]
+        },
+        {
+          "id": "step4-2",
+          "title": "2. 流程配置（智能外呼系统 OBS/AIOBS）",
+          "type": "card",
+          "content": "操作步骤：创建话术流程 → 言知资源库/接口信息引用 → 提示音设计 → 测试及上线 → 外呼拨测 → 报表分析。"
+        },
+        {
+          "id": "step4-config-items",
+          "title": "配置要点",
+          "type": "checklist-card",
+          "items": [
+            "创建话术：配置名称、类别、名单模板（含变量字段如姓名/性别）、意向标签",
+            "知识库引用：关联言知BOT中的知识点到判断节点",
+            "通用FAQ衔接语：FAQ播报后引导对话顺畅继续",
+            "短信设置：通话结束后根据标签/接通状态推送短信（建议≤70字）",
+            "上线拨测：需保证流程完整拉通，可先用文本测试验证流程"
+          ]
+        },
+        {
+          "id": "step4-3",
+          "title": "3. 提示音制作",
+          "type": "card",
+          "content": "两种方式：<strong>合成音</strong>（需获取发音人授权，风格匹配外呼场景）和 <strong>真人录音</strong>（适用于无变量的场景）。"
+        },
+        {
+          "id": "step4-tags",
+          "title": "合成音优化标签",
+          "type": "interactive-table",
+          "columns": ["标签", "作用", "示例"],
+          "data": [
+            { "tag": "[w*] 0/1/2/3", "effect": "停顿调整", "example": "0不停顿，3长停顿" },
+            { "tag": "[=*]", "effect": "拼音音标注音", "example": "银行[=hang4]" },
+            { "tag": "[s*] 0-10", "effect": "语速调整", "example": "默认5" },
+            { "tag": "[v*] 0-10", "effect": "音量调整", "example": "默认5" },
+            { "tag": "[n1]/[n2]", "effect": "数字读法", "example": "[n1]1234567→幺二三四五六七" },
+            { "tag": "[y*] 0/1", "effect": "数字1读音", "example": "0=幺，1=一" },
+            { "tag": "[p*]", "effect": "静音（毫秒）", "example": "[p10]为静音10毫秒" }
+          ]
+        }
+      ],
+      "progress": { "weight": 15 }
+    },
+
+    {
+      "id": "phase5",
+      "title": "五、调优与上线",
+      "icon": "🔧",
+      "type": "guide",
+      "subsections": [
+        {
+          "id": "step5-1",
+          "title": "1. 核心效果优化 — 三个维度",
+          "type": "interactive-table",
+          "columns": ["优化类型", "指标基线", "优化思路"],
+          "data": [
+            { "type": "语义识别效果优化", "baseline": "≥85%（平均90%）", "solution": "分析拒识数据 → 意图缺失则新增意图 → 语料缺失则新增扩展问 → 训练BOT" },
+            { "type": "提示音播报效果优化", "baseline": "—", "solution": "测听合成效果 → 断句不当用[w*]停顿标签 → 多音字用[=*]拼音标签" },
+            { "type": "转写识别效果优化(ASR)", "baseline": "≥85%（平均90%）", "solution": "热词优化(hotword)+后处理 → 方言/新行业词汇用语言模型+声学模型定制" }
+          ]
+        },
+        {
+          "id": "step5-test-flow",
+          "title": "测试上线流程",
+          "type": "flow-steps",
+          "steps": [
+            { "name": "内部测试", "items": ["流程正常性", "语义转写", "意图识别", "多音字播报", "FAQ触发", "短信短链"] },
+            { "name": "客户方测试", "items": ["内部测试通过后联系客户方外呼", "分歧较大时复制话术副本做ABtest"] },
+            { "name": "灰度测试", "items": ["选取100-200名真实客户测试", "收集结果做语义/话术优化后正式上线"] }
+          ]
+        }
+      ],
+      "progress": { "weight": 10 }
+    },
+
+    {
+      "id": "phase6",
+      "title": "六、呼前数据处理",
+      "icon": "📊",
+      "type": "guide",
+      "subsections": [
+        {
+          "id": "step6-1",
+          "title": "数据处理步骤",
+          "type": "numbered-list",
+          "items": [
+            "<strong>白名单预埋</strong>：数据组提取名单后加密发送至分行/预埋单位，尽量当天完成预埋，防止延后导致部分客户自然月活或达标",
+            "<strong>外呼名单处理</strong>：基于OBS系统标准模板调整表格，填充动态参数（MAX值取数、多音字修正等），第三方平台需进行参数整合",
+            "<strong>线路预分配</strong>：根据客群人数与OBS产能估算线路需求。以50路为例，1路1天约完成300条名单。正式外呼建议先2-5路小规模观察，正常后再大路数集中外呼"
+          ]
+        }
+      ],
+      "progress": { "weight": 5 }
+    },
+
+    {
+      "id": "phase7",
+      "title": "七、外呼执行与报表数据建设",
+      "icon": "📋",
+      "type": "guide",
+      "subsections": [
+        {
+          "id": "step7-1",
+          "title": "1. 呼叫计划确定与执行",
+          "type": "card",
+          "content": "操作步骤：创建任务（填写名称/类别/话术）→ 导入名单excel → 设置外呼周期和时间限制 → 配置重复策略（次数/间隔/规则）→ 设置显示号码和电话路数 → 执行任务。",
+          "note": "需避开饭点或休息时间，最大fs支持200路，需更多需联系技术人员搭建集群。"
+        },
+        {
+          "id": "step7-2",
+          "title": "2. 登记外呼记录（基础外呼报表）",
+          "type": "metrics-form",
+          "fields": [
+            "需求部门", "发起日期", "业务大类", "话术名称", "客群规则", "渠道",
+            "触达权益", "进度", "外呼总量", "客群人数", "接通人数", "接通率",
+            "意向人数", "意向率", "转化人数", "转化率", "备注"
+          ]
+        },
+        {
+          "id": "step7-3",
+          "title": "3-5. 意向登记、名单输出与转化统计",
+          "type": "card",
+          "content": "任务结束后按约定口径统计意向数据 → 意向名单72小时后去重匹配导出（已转化排除，未转化按意向分层交人工任务）→ 按前期调研口径回收效果数据持续登统。"
+        },
+        {
+          "id": "step7-6",
+          "title": "6. 建设项目数据报表",
+          "type": "card",
+          "content": "已整理<strong>48张报表</strong>的数据报表体系，涵盖四类业务："
+        },
+        {
+          "id": "step7-reports",
+          "title": "报表体系",
+          "type": "interactive-table",
+          "columns": ["业务类型", "报表类别", "典型表名"],
+          "data": [
+            { "business": "资产提升", "category": "营销转化", "tables": "资产提升月度营销转化对比表、客群营销转化表、地市营销转化月度总表" },
+            { "business": "资产提升", "category": "对照/趋势/漏斗", "tables": "管户对照表、净增长金额/人数表、月度漏斗、累计转化监控表" },
+            { "business": "手机促活", "category": "营销转化", "tables": "促活地市客群转化总表、月度转化总表、标签转化总表" },
+            { "business": "手机促活", "category": "对照/趋势/漏斗", "tables": "管户对照表、不同频度客群活跃率月度对比、累计转化监控表" },
+            { "business": "贷款营销", "category": "全维度", "tables": "按客群/地市转化总表、净增长提款金额/人数表、月度漏斗、累计转化监控表" },
+            { "business": "信用卡", "category": "漏斗+监控", "tables": "促活/拉新/分期/睡眠卡压降月度漏斗+任务漏斗+累计监控表" },
+            { "business": "通用", "category": "日常监控", "tables": "呼叫统计表、机器人数量表、日报/周报/月报监控大表" }
+          ]
+        }
+      ],
+      "progress": { "weight": 10 }
+    },
+
+    {
+      "id": "phase8",
+      "title": "八、数据分析与迭代优化",
+      "icon": "📈",
+      "type": "analysis",
+      "subsections": [
+        {
+          "id": "metrics",
+          "title": "1. 数据分析目标与核心指标",
+          "type": "metrics-cards",
+          "metrics": [
+            { "name": "接通率", "formula": "触达人数/呼叫客群数", "type": "process", "desc": "影响因素：号码资源、客群质量、呼叫号码、时间" },
+            { "name": "有效触达率", "formula": "有效触达人数/呼叫客群数", "type": "process", "desc": "到达营销节点的真实触达情况" },
+            { "name": "意向率", "formula": "意向人数/接通客群数", "type": "process", "desc": "反映客户对活动的偏好与意向" },
+            { "name": "转化人数", "formula": "实际达标人数", "type": "result", "desc": "直观体现营销效果" },
+            { "name": "转化金额", "formula": "达标客户累计提升金额", "type": "result", "desc": "可换算收益金额" },
+            { "name": "转化率", "formula": "达标人数/触达人数", "type": "result", "desc": "越高显示客筛越精准、话术设计越优质" },
+            { "name": "净增额", "formula": "(外呼组增长率-对照组增长率)×管户总额", "type": "result", "desc": "排除自然行为，反映增量价值" }
+          ]
+        },
+        {
+          "id": "funnel-analysis",
+          "title": "2. 数据分析方向 — 流失分析",
+          "type": "interactive-chart",
+          "chartType": "funnel",
+          "title": "漏斗分析",
+          "data": {
+            "stages": ["客群人数", "接通人数", "有效触达", "意向人数", "转化人数"],
+            "exampleValues": [10000, 6500, 5500, 1200, 180]
+          }
+        },
+        {
+          "id": "loss-analysis",
+          "title": "流失分析详情",
+          "type": "interactive-table",
+          "columns": ["数据类型", "流失类型", "占比参考", "优化措施"],
+          "data": [
+            { "dataType": "未接通", "lossType": "号码异常（空号/拨打失败）", "rate": "0.18%", "action": "推动银行更新客户信息" },
+            { "dataType": "未接通", "lossType": "信号异常（关机）", "rate": "1.37%", "action": "重呼" },
+            { "dataType": "未接通", "lossType": "未接听或屏蔽", "rate": "19.70%", "action": "建立呼叫档案确认屏蔽，调整触达策略" },
+            { "dataType": "用户挂机", "lossType": "提示音过长/设计不合理", "rate": "2.64%", "action": "精简营销节点提示音" },
+            { "dataType": "用户挂机", "lossType": "无需求无意向", "rate": "1.77%", "action": "优化客筛逻辑，尝试模型训练" },
+            { "dataType": "系统挂机", "lossType": "明确拒绝", "rate": "3.17%", "action": "—" },
+            { "dataType": "用户交互", "lossType": "不方便", "rate": "4.04%", "action": "重呼" },
+            { "dataType": "拒识", "lossType": "意图缺失/语料缺失", "rate": "2.00%/4.22%", "action": "优化转写、语义，减少拒识率" }
+          ]
+        },
+        {
+          "id": "optimization",
+          "title": "3. 基于分析结果的迭代优化",
+          "type": "optimization-cards",
+          "strategies": [
+            {
+              "title": "触达策略优化",
+              "items": [
+                "优先使用官方短号 → 来电名片功能",
+                "重呼策略优化（复用2次间隔1小时）",
+                "多渠道组合触达（智能外呼+企微+短信+App+人工）",
+                "同客户2周内1次触达"
+              ]
+            },
+            {
+              "title": "客筛策略优化",
+              "items": [
+                "调整标签参数取值（如余额宝转入≥3000元）",
+                "增减规则内容",
+                "案例：转化率从5.89%提升至7.03%（+1.14%）"
+              ]
+            },
+            {
+              "title": "客户数据治理",
+              "items": [
+                "收集空号/黑名单/错号定期回传行方",
+                "客筛阶段提前排除",
+                "提高线路利用率"
+              ]
+            },
+            {
+              "title": "ABTest优化",
+              "items": [
+                "原则：每次测试变量唯一，数据驱动",
+                "流程：漏斗分析定位可优化点 → 改进设计 → 执行测试 → 效果对比 → 总结推广应用"
+              ]
+            }
+          ]
+        }
+      ],
+      "progress": { "weight": 20 }
+    },
+
+    {
+      "id": "summary",
+      "title": "总结沉淀",
+      "icon": "📝",
+      "type": "summary",
+      "subsections": [
+        {
+          "id": "summary-1",
+          "title": "优秀话术沉淀至货架",
+          "type": "card",
+          "content": "适时将话术和意图打包回流至外呼运营案例货架，做到资源回流和集中管理。"
+        },
+        {
+          "id": "summary-2",
+          "title": "输出方法论",
+          "type": "card",
+          "content": "基于运营方案与数据关系总结——各场景客群特点与客筛思路、话术设计思路与方法、转化率提升策略、高效数据标签治理方法。"
+        },
+        {
+          "id": "core-concept",
+          "title": "核心理念",
+          "type": "tip-box",
+          "level": "success",
+          "content": "在不断的思考、总结、输出过程中提升自己，同时也将无形的宝贵经验和资产传递下去。存客运营以精细化的千人千面运营方案，助力银行将长尾客户逐渐转化为高价值客户，形成"客户—用户—核心用户"的转化路线。"
+        }
+      ],
+      "progress": { "weight": 5 }
+    }
+  ],
+
+  "settings": {
+    "progressTracking": true,
+    "checklistCompletion": true,
+    "bookmarkNotes": true,
+    "exportPDF": true,
+    "autoSave": true,
+    "showEstimatedTime": true
+  }
+}

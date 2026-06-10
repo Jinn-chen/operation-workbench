@@ -1,0 +1,1070 @@
+/**
+ * 新手指南交互样式
+ * 基于 style.css 扩展
+ */
+
+/* ========== 变量定义 ========== */
+:root {
+  --ng-primary: #1890ff;
+  --ng-primary-light: #40a9ff;
+  --ng-primary-dark: #096dd9;
+  --ng-success: #52c41a;
+  --ng-warning: #faad14;
+  --ng-error: #ff4d4f;
+  --ng-bg-light: #f5f7fa;
+  --ng-bg-card: #ffffff;
+  --ng-border: #e8e8e8;
+  --ng-text: #333333;
+  --ng-text-secondary: #666666;
+  --ng-text-muted: #999999;
+  --ng-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --ng-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --ng-radius: 8px;
+  --ng-radius-sm: 4px;
+  --ng-transition: all 0.3s ease;
+}
+
+/* ========== 主容器布局 ========== */
+.ng-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.ng-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr 320px;
+  gap: 24px;
+  min-height: calc(100vh - 200px);
+}
+
+@media (max-width: 1199px) {
+  .ng-layout {
+    grid-template-columns: 60px 1fr 280px;
+  }
+  .ng-sidebar-nav .nav-text { display: none; }
+}
+
+@media (max-width: 991px) {
+  .ng-layout {
+    grid-template-columns: 1fr;
+  }
+  .ng-sidebar-nav,
+  .ng-right-panel {
+    display: none;
+  }
+  .ng-sidebar-nav.mobile-open,
+  .ng-right-panel.mobile-open {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: #fff;
+    padding: 20px;
+    overflow-y: auto;
+  }
+}
+
+/* ========== 左侧导航栏 ========== */
+.ng-sidebar-nav {
+  position: sticky;
+  top: 80px;
+  height: fit-content;
+  background: var(--ng-bg-card);
+  border-radius: var(--ng-radius);
+  box-shadow: var(--ng-shadow);
+  padding: 16px;
+}
+
+.ng-sidebar-nav .nav-header {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ng-text);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--ng-border);
+  margin-bottom: 12px;
+}
+
+.ng-sidebar-nav .nav-section {
+  margin-bottom: 16px;
+}
+
+.ng-sidebar-nav .nav-section-title {
+  font-size: 12px;
+  color: var(--ng-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.ng-sidebar-nav .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--ng-radius-sm);
+  color: var(--ng-text-secondary);
+  text-decoration: none;
+  transition: var(--ng-transition);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.ng-sidebar-nav .nav-item:hover {
+  background: var(--ng-bg-light);
+  color: var(--ng-primary);
+}
+
+.ng-sidebar-nav .nav-item.active {
+  background: linear-gradient(135deg, var(--ng-primary) 0%, var(--ng-primary-light) 100%);
+  color: #fff;
+}
+
+.ng-sidebar-nav .nav-item .nav-icon {
+  font-size: 18px;
+}
+
+/* 进度条 */
+.ng-progress {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--ng-border);
+}
+
+.ng-progress-label {
+  font-size: 12px;
+  color: var(--ng-text-muted);
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ng-progress-bar {
+  height: 6px;
+  background: var(--ng-bg-light);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.ng-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ng-primary) 0%, var(--ng-success) 100%);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+/* ========== 中央内容区 ========== */
+.ng-content {
+  background: var(--ng-bg-card);
+  border-radius: var(--ng-radius);
+  box-shadow: var(--ng-shadow);
+  padding: 32px;
+}
+
+.ng-section {
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--ng-border);
+}
+
+.ng-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.ng-section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  cursor: pointer;
+}
+
+.ng-section-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--ng-primary) 0%, var(--ng-primary-light) 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.ng-section-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--ng-text);
+  margin: 0;
+}
+
+.ng-section-badge {
+  background: var(--ng-bg-light);
+  color: var(--ng-text-secondary);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+/* ========== 卡片样式 ========== */
+.ng-card {
+  background: var(--ng-bg-light);
+  border-radius: var(--ng-radius);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: var(--ng-transition);
+}
+
+.ng-card:hover {
+  box-shadow: var(--ng-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.ng-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ng-text);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ng-card-content {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--ng-text-secondary);
+}
+
+/* 高亮卡片 */
+.ng-card.highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.ng-highlight-item {
+  background: var(--ng-bg-card);
+  border-radius: var(--ng-radius-sm);
+  padding: 16px;
+  text-align: center;
+  border: 1px solid var(--ng-border);
+  transition: var(--ng-transition);
+}
+
+.ng-highlight-item:hover {
+  border-color: var(--ng-primary);
+  background: linear-gradient(135deg, rgba(24, 144, 255, 0.05) 0%, rgba(64, 169, 255, 0.05) 100%);
+}
+
+.ng-highlight-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.ng-highlight-text {
+  font-size: 13px;
+  color: var(--ng-text-secondary);
+}
+
+/* ========== 可交互表格 ========== */
+.ng-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.ng-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.ng-table th {
+  background: linear-gradient(135deg, var(--ng-primary) 0%, var(--ng-primary-light) 100%);
+  color: #fff;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.ng-table th:first-child {
+  border-radius: var(--ng-radius-sm) 0 0 0;
+}
+
+.ng-table th:last-child {
+  border-radius: 0 var(--ng-radius-sm) 0 0;
+}
+
+.ng-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--ng-border);
+  vertical-align: top;
+}
+
+.ng-table tr:hover td {
+  background: var(--ng-bg-light);
+}
+
+.ng-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ========== 流程图 ========== */
+.ng-flowchart {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+.ng-flow-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ng-flow-node {
+  background: linear-gradient(135deg, var(--ng-primary) 0%, var(--ng-primary-light) 100%);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: var(--ng-radius);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: var(--ng-transition);
+  text-decoration: none;
+}
+
+.ng-flow-node:hover {
+  transform: scale(1.05);
+  box-shadow: var(--ng-shadow-hover);
+}
+
+.ng-flow-node.completed {
+  background: linear-gradient(135deg, var(--ng-success) 0%, #73d13d 100%);
+}
+
+.ng-flow-node.current {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(24, 144, 255, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(24, 144, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(24, 144, 255, 0); }
+}
+
+.ng-flow-arrow {
+  color: var(--ng-primary);
+  font-size: 20px;
+}
+
+/* ========== 可折叠内容 ========== */
+.ng-expandable {
+  background: var(--ng-bg-light);
+  border-radius: var(--ng-radius);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.ng-expandable-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: var(--ng-transition);
+}
+
+.ng-expandable-header:hover {
+  background: rgba(24, 144, 255, 0.05);
+}
+
+.ng-expandable-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ng-text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ng-expandable-icon {
+  transition: transform 0.3s ease;
+}
+
+.ng-expandable.open .ng-expandable-icon {
+  transform: rotate(180deg);
+}
+
+.ng-expandable-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 20px;
+}
+
+.ng-expandable.open .ng-expandable-content {
+  max-height: 1000px;
+  padding: 0 20px 20px;
+}
+
+/* ========== 清单卡片 ========== */
+.ng-checklist {
+  margin-top: 12px;
+}
+
+.ng-checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  font-size: 14px;
+  color: var(--ng-text-secondary);
+}
+
+.ng-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--ng-border);
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--ng-transition);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ng-checkbox:hover {
+  border-color: var(--ng-primary);
+}
+
+.ng-checkbox.checked {
+  background: var(--ng-primary);
+  border-color: var(--ng-primary);
+}
+
+.ng-checkbox.checked::after {
+  content: '✓';
+  color: #fff;
+  font-size: 12px;
+}
+
+.ng-checklist-item.completed .ng-checklist-text {
+  text-decoration: line-through;
+  color: var(--ng-text-muted);
+}
+
+/* ========== 重要提示框 ========== */
+.ng-important-box {
+  background: linear-gradient(135deg, #fff7e6 0%, #fffbe6 100%);
+  border-left: 4px solid var(--ng-warning);
+  border-radius: 0 var(--ng-radius) var(--ng-radius) 0;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+
+.ng-important-box.danger {
+  background: linear-gradient(135deg, #fff1f0 0%, #ffccc7 100%);
+  border-left-color: var(--ng-error);
+}
+
+.ng-important-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ng-warning);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ng-important-box.danger .ng-important-title {
+  color: var(--ng-error);
+}
+
+.ng-important-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ng-important-list li {
+  padding: 6px 0;
+  font-size: 14px;
+  color: var(--ng-text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.ng-important-list li::before {
+  content: '•';
+  color: var(--ng-warning);
+  font-weight: bold;
+}
+
+/* ========== 原则卡片 ========== */
+.ng-principles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.ng-principle-card {
+  background: var(--ng-bg-card);
+  border: 1px solid var(--ng-border);
+  border-radius: var(--ng-radius);
+  padding: 20px;
+  transition: var(--ng-transition);
+}
+
+.ng-principle-card:hover {
+  border-color: var(--ng-primary);
+  box-shadow: var(--ng-shadow);
+}
+
+.ng-principle-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ng-primary);
+  margin-bottom: 8px;
+}
+
+.ng-principle-desc {
+  font-size: 13px;
+  color: var(--ng-text-secondary);
+  line-height: 1.6;
+}
+
+/* ========== 指标卡片 ========== */
+.ng-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.ng-metric-card {
+  background: var(--ng-bg-card);
+  border: 1px solid var(--ng-border);
+  border-radius: var(--ng-radius);
+  padding: 20px;
+  transition: var(--ng-transition);
+}
+
+.ng-metric-card:hover {
+  box-shadow: var(--ng-shadow-hover);
+  transform: translateY(-4px);
+}
+
+.ng-metric-card.process {
+  border-top: 3px solid var(--ng-primary);
+}
+
+.ng-metric-card.result {
+  border-top: 3px solid var(--ng-success);
+}
+
+.ng-metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.ng-metric-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ng-text);
+}
+
+.ng-metric-type {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.ng-metric-type.process {
+  background: rgba(24, 144, 255, 0.1);
+  color: var(--ng-primary);
+}
+
+.ng-metric-type.result {
+  background: rgba(82, 196, 26, 0.1);
+  color: var(--ng-success);
+}
+
+.ng-metric-formula {
+  background: var(--ng-bg-light);
+  padding: 10px 12px;
+  border-radius: var(--ng-radius-sm);
+  font-size: 13px;
+  color: var(--ng-text-secondary);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 8px;
+}
+
+.ng-metric-desc {
+  font-size: 12px;
+  color: var(--ng-text-muted);
+  line-height: 1.5;
+}
+
+/* ========== 漏斗图 ========== */
+.ng-funnel {
+  margin: 24px 0;
+}
+
+.ng-funnel-stage {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.ng-funnel-bar-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.ng-funnel-bar {
+  height: 40px;
+  background: linear-gradient(90deg, var(--ng-primary) 0%, var(--ng-primary-light) 100%);
+  border-radius: var(--ng-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--ng-transition);
+  position: relative;
+}
+
+.ng-funnel-bar:hover {
+  transform: scaleX(1.02);
+  box-shadow: var(--ng-shadow);
+}
+
+.ng-funnel-label {
+  width: 100px;
+  text-align: right;
+  padding-right: 12px;
+  font-size: 13px;
+  color: var(--ng-text-secondary);
+}
+
+.ng-funnel-value {
+  width: 80px;
+  padding-left: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ng-text);
+}
+
+.ng-funnel-rate {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-left: 8px;
+}
+
+/* ========== 优化策略卡片 ========== */
+.ng-optimization-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.ng-optimization-card {
+  background: var(--ng-bg-card);
+  border: 1px solid var(--ng-border);
+  border-radius: var(--ng-radius);
+  overflow: hidden;
+  transition: var(--ng-transition);
+}
+
+.ng-optimization-card:hover {
+  box-shadow: var(--ng-shadow-hover);
+}
+
+.ng-optimization-header {
+  background: linear-gradient(135deg, var(--ng-primary) 0%, var(--ng-primary-light) 100%);
+  color: #fff;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ng-optimization-body {
+  padding: 16px;
+}
+
+.ng-optimization-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--ng-border);
+  font-size: 13px;
+  color: var(--ng-text-secondary);
+  line-height: 1.6;
+}
+
+.ng-optimization-item:last-child {
+  border-bottom: none;
+}
+
+.ng-optimization-item::before {
+  content: '→';
+  color: var(--ng-primary);
+  flex-shrink: 0;
+}
+
+/* ========== 右侧面板 ========== */
+.ng-right-panel {
+  position: sticky;
+  top: 80px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ng-panel-card {
+  background: var(--ng-bg-card);
+  border-radius: var(--ng-radius);
+  box-shadow: var(--ng-shadow);
+  padding: 20px;
+}
+
+.ng-panel-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ng-text);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 表单样式 */
+.ng-form-group {
+  margin-bottom: 16px;
+}
+
+.ng-form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ng-text);
+  margin-bottom: 6px;
+}
+
+.ng-form-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--ng-border);
+  border-radius: var(--ng-radius-sm);
+  font-size: 14px;
+  transition: var(--ng-transition);
+}
+
+.ng-form-input:focus {
+  outline: none;
+  border-color: var(--ng-primary);
+  box-shadow: 0 0 0 3px rgba(24, 144, 255, 0.1);
+}
+
+.ng-form-textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* 按钮 */
+.ng-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: var(--ng-radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--ng-transition);
+  border: none;
+}
+
+.ng-btn-primary {
+  background: linear-gradient(135deg, var(--ng-primary) 0%, var(--ng-primary-light) 100%);
+  color: #fff;
+}
+
+.ng-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--ng-shadow);
+}
+
+.ng-btn-outline {
+  background: transparent;
+  border: 1px solid var(--ng-border);
+  color: var(--ng-text-secondary);
+}
+
+.ng-btn-outline:hover {
+  border-color: var(--ng-primary);
+  color: var(--ng-primary);
+}
+
+/* ========== 标签 ========== */
+.ng-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ng-tag {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--ng-bg-light);
+  border: 1px solid var(--ng-border);
+  border-radius: var(--ng-radius-sm);
+  padding: 12px 16px;
+  transition: var(--ng-transition);
+}
+
+.ng-tag:hover {
+  border-color: var(--ng-primary);
+  background: rgba(24, 144, 255, 0.05);
+}
+
+.ng-tag-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ng-primary);
+  margin-bottom: 4px;
+}
+
+.ng-tag-desc {
+  font-size: 12px;
+  color: var(--ng-text-muted);
+}
+
+/* ========== 提示框 ========== */
+.ng-tip-box {
+  background: linear-gradient(135deg, #f6ffed 0%, #d9f7be 100%);
+  border-radius: var(--ng-radius);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  border: 1px solid #b7eb8f;
+}
+
+.ng-tip-box.success {
+  border-color: var(--ng-success);
+}
+
+.ng-tip-box .ng-tip-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ng-success);
+  margin-bottom: 8px;
+}
+
+.ng-tip-box .ng-tip-content {
+  font-size: 14px;
+  color: var(--ng-text-secondary);
+  line-height: 1.8;
+}
+
+/* ========== 编号列表 ========== */
+.ng-numbered-list {
+  counter-reset: item;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ng-numbered-list li {
+  counter-increment: item;
+  padding: 12px 0 12px 40px;
+  position: relative;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--ng-text-secondary);
+  border-bottom: 1px dashed var(--ng-border);
+}
+
+.ng-numbered-list li:last-child {
+  border-bottom: none;
+}
+
+.ng-numbered-list li::before {
+  content: counter(item);
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 24px;
+  height: 24px;
+  background: var(--ng-primary);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========== 步骤卡片 ========== */
+.ng-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ng-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  background: var(--ng-bg-light);
+  border-radius: var(--ng-radius);
+  transition: var(--ng-transition);
+}
+
+.ng-step:hover {
+  background: rgba(24, 144, 255, 0.05);
+}
+
+.ng-step-number {
+  width: 32px;
+  height: 32px;
+  background: var(--ng-primary);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.ng-step-content {
+  flex: 1;
+}
+
+.ng-step-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ng-text);
+  margin-bottom: 4px;
+}
+
+.ng-step-desc {
+  font-size: 13px;
+  color: var(--ng-text-muted);
+}
+
+/* ========== 工具栏 ========== */
+.ng-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--ng-border);
+}
+
+.ng-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ng-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ========== 书签和笔记 ========== */
+.ng-bookmark-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--ng-text-muted);
+  transition: var(--ng-transition);
+  padding: 4px;
+}
+
+.ng-bookmark-btn:hover,
+.ng-bookmark-btn.active {
+  color: var(--ng-warning);
+}
+
+.ng-notes-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.ng-note-item {
+  padding: 12px;
+  background: var(--ng-bg-light);
+  border-radius: var(--ng-radius-sm);
+  margin-bottom: 8px;
+}
+
+.ng-note-item:last-child {
+  margin-bottom: 0;
+}
+
+.ng-note-content {
+  font-size: 13px;
+  color: var(--ng-text-secondary);
+  margin-bottom: 6px;
+}
+
+.ng-note-meta {
+  font-size: 11px;
+  color: var(--ng-text-muted);
+}
+
+/* ========== 响应式移动端按钮 ========== */
+.ng-mobile-toggle {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--ng-primary) 0%, var(--ng-primary-light) 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  box-shadow: var(--ng-shadow-hover);
+  cursor: pointer;
+  z-index: 100;
+}
+
+@media (max-width: 991px) {
+  .ng-mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

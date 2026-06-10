@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新手指南 — 运营工作台</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* 新手指南布局 */
+        .ng-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .ng-layout {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 24px;
+            min-height: calc(100vh - 200px);
+        }
+
+        /* 左侧导航 */
+        .ng-sidebar-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            height: fit-content;
+            position: sticky;
+            top: 80px;
+        }
+
+        .ng-sidebar-nav h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #667eea;
+            font-size: 18px;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-item {
+            padding: 12px 16px;
+            margin: 4px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .nav-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateX(4px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .nav-icon {
+            margin-right: 12px;
+            font-size: 18px;
+        }
+
+        /* 主内容区 */
+        .ng-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .ng-meta {
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .ng-meta p {
+            margin: 8px 0;
+            color: #666;
+        }
+
+        .ng-section {
+            margin-bottom: 40px;
+        }
+
+        .ng-section-header {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .ng-section-header:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        .ng-section-icon {
+            font-size: 24px;
+            margin-right: 16px;
+        }
+
+        .ng-section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+        }
+
+        .ng-section-badge {
+            margin-left: auto;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .ng-subsection {
+            margin-bottom: 24px;
+        }
+
+        .ng-toolbar {
+            margin-bottom: 16px;
+        }
+
+        .ng-subsection h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin: 0 0 16px 0;
+        }
+
+        .ng-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+
+        .ng-card-content {
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .ng-card-content strong {
+            color: #333;
+        }
+
+        
+        .ng-panel-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .ng-panel-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .ng-panel-title span {
+            margin-right: 8px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 1199px) {
+            .ng-layout {
+                grid-template-columns: 60px 1fr 280px;
+            }
+            .nav-text { display: none; }
+        }
+
+        @media (max-width: 991px) {
+            .ng-layout {
+                grid-template-columns: 1fr;
+            }
+            .ng-sidebar-nav, .ng-right-panel {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../index.html" class="logo">
+                            <img src="../images/logo.png" alt="运营工作台" class="logo-image">
+                        </a>
+            <nav class="main-nav" id="mainNav">
+                <button class="nav-toggle" id="navToggle" aria-label="菜单">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="../index.html">首页</a></li>
+                    <li><a href="newcomer-guide.html" class="active">新手指南</a></li>
+                    <li><a href="call-scripts.html">外呼话术货架</a></li>
+                    <li><a href="operation-strategies.html">运营策略集</a></li>
+                    <li><a href="data-analysis.html">数据分析工具</a></li>
+                    <li><a href="related-products.html">相关产品</a></li>
+                    <li><a href="operation-cases.html">运营案例</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="ng-container">
+        <div class="breadcrumb">
+            <a href="../index.html">首页</a> &rsaquo; <span>新手指南</span>
+        </div>
+
+        <div class="ng-layout">
+            <!-- 左侧导航栏 -->
+            <aside class="ng-sidebar-nav">
+                <h3>📖 目录</h3>
+                <ul class="nav-list">
+                    <li class="nav-item active" data-section="overview">
+                        <span class="nav-icon">📖</span>
+                        <span class="nav-text">前言与概述</span>
+                    </li>
+                    <li class="nav-item" data-section="phase1">
+                        <span class="nav-icon">🔍</span>
+                        <span class="nav-text">需求调研</span>
+                    </li>
+                    <li class="nav-item" data-section="phase2">
+                        <span class="nav-icon">🎯</span>
+                        <span class="nav-text">客筛范围圈定</span>
+                    </li>
+                    <li class="nav-item" data-section="phase3">
+                        <span class="nav-icon">✏️</span>
+                        <span class="nav-text">交互方案设计</span>
+                    </li>
+                    <li class="nav-item" data-section="phase4">
+                        <span class="nav-icon">🤖</span>
+                        <span class="nav-text">机器人搭建</span>
+                    </li>
+                    <li class="nav-item" data-section="phase5">
+                        <span class="nav-icon">🔧</span>
+                        <span class="nav-text">调优与上线</span>
+                    </li>
+                    <li class="nav-item" data-section="phase6">
+                        <span class="nav-icon">📊</span>
+                        <span class="nav-text">呼前数据处理</span>
+                    </li>
+                    <li class="nav-item" data-section="phase7">
+                        <span class="nav-icon">📋</span>
+                        <span class="nav-text">外呼执行</span>
+                    </li>
+                    <li class="nav-item" data-section="phase8">
+                        <span class="nav-icon">📈</span>
+                        <span class="nav-text">数据分析与迭代优化</span>
+                    </li>
+                    <li class="nav-item" data-section="summary">
+                        <span class="nav-icon">📝</span>
+                        <span class="nav-text">总结沉淀</span>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- 中央主内容区 -->
+            <main class="ng-content">
+                <div class="ng-meta">
+                    <p><strong>存客运营新人指导书</strong> | 版本：V1.0 | 产品运营部 | 2023-06-01</p>
+                    <p>本手册涵盖业务需求调研、业务需求建设、业务效果优化、经验沉淀四大模块，指导产品运营人员快速掌握存客运营方法和技巧。</p>
+                </div>
+
+                <!-- 前言与概述 -->
+                <section class="ng-section" id="section-overview">
+                    <div class="ng-section-header">
+                        <div class="ng-section-icon">📖</div>
+                        <h2 class="ng-section-title">前言与概述</h2>
+                    </div>
+                    <p style="font-size: 15px; color: #666; margin-bottom: 20px;">本手册涵盖业务需求调研、业务需求建设、业务效果优化、经验沉淀四大模块。</p>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>什么是存量客户运营</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                银行存量客户是指银行已有的客户群体。调查显示，银行对存量客户进行挖掘经营的<strong>转化成本远低于获新客的成本</strong>。存量客户具有基数大、信息完善度好、维系运营方便等特征，具有较高的潜力挖掘价值。
+                                <br><br>
+                                <div style="display: flex; gap: 16px; margin-top: 16px;">
+                                    <div style="flex: 1; text-align: center; padding: 16px; background: #f0f5ff; border-radius: 8px;">
+                                        <div style="font-size: 24px; margin-bottom: 8px;">📉</div>
+                                        <div style="font-weight: 600; color: #333;">转化成本低</div>
+                                    </div>
+                                    <div style="flex: 1; text-align: center; padding: 16px; background: #f0f5ff; border-radius: 8px;">
+                                        <div style="font-size: 24px; margin-bottom: 8px;">📊</div>
+                                        <div style="font-weight: 600; color: #333;">基数大、信息完善</div>
+                                    </div>
+                                    <div style="flex: 1; text-align: center; padding: 16px; background: #f0f5ff; border-radius: 8px;">
+                                        <div style="font-size: 24px; margin-bottom: 8px;">💡</div>
+                                        <div style="font-weight: 600; color: #333;">潜力挖掘价值高</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>常见存客经营场景</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                <table style="width: 100%; border-collapse: collapse;">
+                                    <tr style="background: #f8f9fa;">
+                                        <th style="padding: 12px; text-align: left; border-bottom: 2px solid #dee2e6;">场景</th>
+                                        <th style="padding: 12px; text-align: left; border-bottom: 2px solid #dee2e6;">说明</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">手机银行促活</td>
+                                        <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">通过活动权益推送激发用户登录手机银行的意愿和次数，让"流量"转变成"留量"</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">资产提升</td>
+                                        <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">通过系列手段提升客户在银行的资产持有量（活期、定期、基金、理财、保险等）</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">信用卡经营</td>
+                                        <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">包括信用卡获新客、促激活、分期等场景</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">贷款营销</td>
+                                        <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">促授信、已授信促提款、已提款促提升等场景</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">催收</td>
+                                        <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">根据贷款到期时间，通过短信、外呼、企微等方式进行催收提醒</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 12px;">业务提醒</td>
+                                        <td style="padding: 12px;">定期到期提醒等，维护客户权益，减少客诉</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>存客运营全流程</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+                                    <div style="flex: 1; min-width: 120px; text-align: center; padding: 12px; background: #e3f2fd; border-radius: 8px; font-weight: 500;">🔍 需求调研</div>
+                                    <div style="flex: 1; min-width: 120px; text-align: center; padding: 12px; background: #e3f2fd; border-radius: 8px; font-weight: 500;">🎯 客筛范围圈定</div>
+                                    <div style="flex: 1; min-width: 120px; text-align: center; padding: 12px; background: #e3f2fd; border-radius: 8px; font-weight: 500;">✏️ 交互方案设计</div>
+                                    <div style="flex: 1; min-width: 120px; text-align: center; padding: 12px; background: #e3f2fd; border-radius: 8px; font-weight: 500;">🤖 机器人搭建</div>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+                                    <div style="flex: 1; min-width: 120px; text-align: center; padding: 12px; background: #e3f2fd; border-radius: 8px; font-weight: 500;">🔧 调优与上线</div>
+                                    <div style="flex: 1; min-width: 120px; text-align: center; padding: 12px; background: #e3f2fd; border-radius: 8px; font-weight: 500;">📊 呼前数据处理</div>
+                                    <div style="flex: 1; min-width: 120px; text-align: center; padding: 12px; background: #e3f2fd; border-radius: 8px; font-weight: 500;">📋 外呼执行</div>
+                                    <div style="flex: 1; min-width: 120px; text-align: center; padding: 12px; background: #e3f2fd; border-radius: 8px; font-weight: 500;">📈 数据分析与迭代优化</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 需求调研 -->
+                <section class="ng-section" id="section-phase1">
+                    <div class="ng-section-header">
+                        <div class="ng-section-icon">🔍</div>
+                        <h2 class="ng-section-title">一、需求调研</h2>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>1. 明确客户目标</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                与客户充分沟通，了解推广目标和预期效果，再制定对应的运营策略。以手机银行促活为例，需了解月活/年活目标，再拆分为细项指标执行。
+                                <br><br>
+                                <div style="background: #f6ffed; border-left: 4px solid #52c41a; padding: 12px; margin-top: 12px;">
+                                    <div style="font-weight: 600; margin-bottom: 8px;">检查清单：</div>
+                                    <div>✓ 已确认推广目标</div>
+                                    <div>✓ 已确认预期效果指标</div>
+                                    <div>✓ 已拆分子目标</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>2. 调查当前业务指标</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                了解当前业务状态的关键指标：
+                                <ul style="margin-top: 12px; margin-left: 20px;">
+                                    <li><strong>客群规模</strong>：省行客户总数、手机银行客户数、各资产等级分布</li>
+                                    <li><strong>外呼总量</strong>：日均/月均呼叫量</li>
+                                    <li><strong>外呼频率</strong>：当前触达频率（30天/14天）</li>
+                                    <li><strong>消保流程</strong>：审核流程和平均耗时</li>
+                                    <li><strong>短信兜底</strong>：是否具备短信同步发送功能</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 更多章节... -->
+                <section class="ng-section" id="section-phase2">
+                    <div class="ng-section-header">
+                        <div class="ng-section-icon">🎯</div>
+                        <h2 class="ng-section-title">二、客筛范围圈定</h2>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>1. 获取客筛规则，圈定外呼客群</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                通过SQL规则筛数（另有AI营销平台模型筛数）。手机促活类以登录频率、消费偏好为主要规则；资产提升类以资产状况、交易流水为主要规则。
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 三、交互方案设计 -->
+                <section class="ng-section" id="section-phase3">
+                    <div class="ng-section-header">
+                        <div class="ng-section-icon">✏️</div>
+                        <h2 class="ng-section-title">三、交互方案设计</h2>
+                    </div>
+                    <p style="font-size: 15px; color: #666; margin-bottom: 20px;">设计原则："流程有逻辑，话术讲人话，产品有人设"。</p>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>1. 流程设计</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                完整营销流程三个模块：<strong>客户身份确认</strong>（明确来电身份+确认接听人，增强信任感）→ <strong>开场白</strong>（简明描述利好内容引发兴趣，首层意向筛选）→ <strong>活动介绍</strong>（说明参与方式与条件，精筛意向确认）。小活动可跳过身份确认以缩短流程提升线路效率。
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>2. 话术共创 — 交互设计文档</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                由4个步骤组成：确定流程节点名称 → 节点提示音文本设计 → 意图出口节点设计（流程出口）及拓展 → 跳转节点名称。
+                                <br><br>
+                                <div style="background: #f6ffed; border-left: 4px solid #52c41a; padding: 16px; margin-top: 12px;">
+                                    <div style="font-weight: 600; margin-bottom: 8px;">知识点分类要点：</div>
+                                    <div style="font-size: 14px; color: #52c41a;">即使意图同为"肯定"，也需细化分类（如"是的/对的"归为"肯定1"、"是我自己操作的啊"归为"亲自操作"），避免语义缠绕问题。</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>3. 短信内容设计</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                三个部分：活动名称 + 活动内容 + 参与路径。需严格确认言简意赅，遵守局点字数要求，推动添加活动直达短链。
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>4. 话术评审与消保审核</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                <div style="display: grid; gap: 8px;">
+                                    <div style="display: flex; align-items: center; gap: 8px; padding: 8px; background: #f5f5f5; border-radius: 4px;">
+                                        <input type="checkbox" checked> 合理包装，不夸大活动内容
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 8px; padding: 8px; background: #f5f5f5; border-radius: 4px;">
+                                        <input type="checkbox" checked> 智能语音不涉及、不宣传具体产品（尤其理财类风险产品）
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 8px; padding: 8px; background: #f5f5f5; border-radius: 4px;">
+                                        <input type="checkbox" checked> 不偷换概念（如"微信立减金"≠"微信现金红包"）
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 8px; padding: 8px; background: #f5f5f5; border-radius: 4px;">
+                                        <input type="checkbox" checked> 涉及权益金额必须描述准确
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 四、机器人搭建 -->
+                <section class="ng-section" id="section-phase4">
+                    <div class="ng-section-header">
+                        <div class="ng-section-icon">🤖</div>
+                        <h2 class="ng-section-title">四、机器人搭建</h2>
+                    </div>
+                    <p style="font-size: 15px; color: #666; margin-bottom: 20px;">三部分工作：知识库建库、流程配置、提示音录制。搭建前可参考运营案例货架（截止2023年6月已积累<strong>13大类约150个运营案例</strong>）。</p>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>1. 知识库建库（讯飞言知）</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                <div style="display: grid; gap: 12px;">
+                                    <div style="display: flex; align-items: center; gap: 12px; padding: 16px; background: #e3f2fd; border-radius: 8px;">
+                                        <div style="width: 36px; height: 36px; background: #2196f3; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600;">1</div>
+                                        <div>
+                                            <div style="font-weight: 600;">新建BOT</div>
+                                            <div style="font-size: 14px; color: #666;">创建机器人基础配置</div>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 12px; padding: 16px; background: #e3f2fd; border-radius: 8px;">
+                                        <div style="width: 36px; height: 36px; background: #2196f3; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600;">2</div>
+                                        <div>
+                                            <div style="font-weight: 600;">配置技能（词集+意图）</div>
+                                            <div style="font-size: 14px; color: #666;">设置识别规则和响应逻辑</div>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 12px; padding: 16px; background: #e3f2fd; border-radius: 8px;">
+                                        <div style="width: 36px; height: 36px; background: #2196f3; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 600;">3</div>
+                                        <div>
+                                            <div style="font-weight: 600;">发布BOT到渠道</div>
+                                            <div style="font-size: 14px; color: #666;">部署到外呼系统</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 五、调优与上线 -->
+                <section class="ng-section" id="section-phase5">
+                    <div class="ng-section-header">
+                        <div class="ng-section-icon">🔧</div>
+                        <h2 class="ng-section-title">五、调优与上线</h2>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>1. 核心效果优化 — 三个维度</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                <table style="width: 100%; border-collapse: collapse;">
+                                    <tr style="background: #f8f9fa;">
+                                        <th style="padding: 12px; text-align: left; border-bottom: 2px solid #dee2e6;">优化类型</th>
+                                        <th style="padding: 12px; text-align: left; border-bottom: 2px solid #dee2e6;">指标基线</th>
+                                        <th style="padding: 12px; text-align: left; border-bottom: 2px solid #dee2e6;">优化思路</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">语义识别效果优化</td>
+                                        <td style="padding: 12px; border-bottom: 1px solid #dee2e6; font-weight: 600;">≥85%（平均90%）</td>
+                                        <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">分析拒识数据 → 意图缺失则新增意图 → 语料缺失则新增扩展问 → 训练BOT</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">提示音播报效果优化</td>
+                                        <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">—</td>
+                                        <td style="padding: 12px; border-bottom: 1px solid #dee2e6;">测听合成效果 → 断句不当用[w*]停顿标签 → 多音字用[=*]拼音标签</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 12px;">转写识别效果优化(ASR)</td>
+                                        <td style="padding: 12px; font-weight: 600;">≥85%（平均90%）</td>
+                                        <td style="padding: 12px;">热词优化(hotword)+后处理 → 方言/新行业词汇用语言模型+声学模型定制</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 六、呼前数据处理 -->
+                <section class="ng-section" id="section-phase6">
+                    <div class="ng-section-header">
+                        <div class="ng-section-icon">📊</div>
+                        <h2 class="ng-section-title">六、呼前数据处理</h2>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>数据处理步骤</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                <ol style="margin: 0; padding-left: 20px;">
+                                    <li style="padding: 8px 0;">
+                                        <strong>白名单预埋</strong>：数据组提取名单后加密发送至分行/预埋单位，尽量当天完成预埋，防止延后导致部分客户自然月活或达标
+                                    </li>
+                                    <li style="padding: 8px 0;">
+                                        <strong>外呼名单处理</strong>：基于OBS系统标准模板调整表格，填充动态参数（MAX值取数、多音字修正等），第三方平台需进行参数整合
+                                    </li>
+                                    <li style="padding: 8px 0;">
+                                        <strong>线路预分配</strong>：根据客群人数与OBS产能估算线路需求。以50路为例，1路1天约完成300条名单。正式外呼建议先2-5路小规模观察，正常后再大路数集中外呼
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 七、外呼执行与报表数据建设 -->
+                <section class="ng-section" id="section-phase7">
+                    <div class="ng-section-header">
+                        <div class="ng-section-icon">📋</div>
+                        <h2 class="ng-section-title">七、外呼执行与报表数据建设</h2>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>1. 呼叫计划确定与执行</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                操作步骤：创建任务（填写名称/类别/话术）→ 导入名单excel → 设置外呼周期和时间限制 → 配置重复策略（次数/间隔/规则）→ 设置显示号码和电话路数 → 执行任务。
+                                <br><br>
+                                <div style="background: #fff7e6; padding: 12px; border-radius: 4px; margin-top: 12px; font-size: 14px; color: #d46b08;">
+                                    💡 需避开饭点或休息时间，最大fs支持200路，需更多需联系技术人员搭建集群。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>2. 登记外呼记录（基础外呼报表）</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; font-size: 14px;">
+                                    <div>需求部门 | 发起日期 | 业务大类</div>
+                                    <div>话术名称 | 客群规则 | 渠道</div>
+                                    <div>触达权益 | 进度 | 外呼总量</div>
+                                    <div>客群人数 | 接通人数 | 接通率</div>
+                                    <div>意向人数 | 意向率 | 转化人数</div>
+                                    <div>转化率 | 备注</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>3. 建设项目数据报表</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                已整理<strong>48张报表</strong>的数据报表体系，涵盖四类业务：
+                                <br><br>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 12px;">
+                                    <div style="background: #f0f9ff; padding: 16px; border-radius: 8px;">
+                                        <div style="font-weight: 600; color: #1890ff; margin-bottom: 8px;">资产提升</div>
+                                        <div style="font-size: 13px; color: #666;">营销转化表 | 对照表 | 漏斗分析 | 累计监控</div>
+                                    </div>
+                                    <div style="background: #f0f9ff; padding: 16px; border-radius: 8px;">
+                                        <div style="font-weight: 600; color: #1890ff; margin-bottom: 8px;">手机促活</div>
+                                        <div style="font-size: 13px; color: #666;">转化总表 | 频度对比 | 累计监控表</div>
+                                    </div>
+                                    <div style="background: #f0f9ff; padding: 16px; border-radius: 8px;">
+                                        <div style="font-weight: 600; color: #1890ff; margin-bottom: 8px;">贷款营销</div>
+                                        <div style="font-size: 13px; color: #666;">按客群/地市表 | 净增长表 | 漏斗分析</div>
+                                    </div>
+                                    <div style="background: #f0f9ff; padding: 16px; border-radius: 8px;">
+                                        <div style="font-weight: 600; color: #1890ff; margin-bottom: 8px;">信用卡</div>
+                                        <div style="font-size: 13px; color: #666;">促活/拉新/分期 | 睡眠卡压降 | 月度漏斗</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 八、数据分析与迭代优化 -->
+                <section class="ng-section" id="section-phase8">
+                    <div class="ng-section-header">
+                        <div class="ng-section-icon">📈</div>
+                        <h2 class="ng-section-title">八、数据分析与迭代优化</h2>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>1. 数据分析目标与核心指标</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+                                    <div style="background: #f0f5ff; padding: 16px; border-radius: 8px;">
+                                        <h4 style="margin: 0 0 8px; color: #1890ff;">接通率</h4>
+                                        <p style="margin: 0; font-size: 12px; color: #666;">触达人数/呼叫客群数</p>
+                                        <p style="margin: 4px 0 0; font-size: 11px; color: #999;">影响因素：号码资源、客群质量、呼叫号码、时间</p>
+                                    </div>
+                                    <div style="background: #f0f5ff; padding: 16px; border-radius: 8px;">
+                                        <h4 style="margin: 0 0 8px; color: #1890ff;">意向率</h4>
+                                        <p style="margin: 0; font-size: 12px; color: #666;">意向人数/接通客群数</p>
+                                        <p style="margin: 4px 0 0; font-size: 11px; color: #999;">反映客户对活动的偏好与意向</p>
+                                    </div>
+                                    <div style="background: #f0f5ff; padding: 16px; border-radius: 8px;">
+                                        <h4 style="margin: 0 0 8px; color: #1890ff;">转化率</h4>
+                                        <p style="margin: 0; font-size: 12px; color: #666;">达标人数/触达人数</p>
+                                        <p style="margin: 4px 0 0; font-size: 11px; color: #999;">越高显示客筛越精准、话术设计越优质</p>
+                                    </div>
+                                    <div style="background: #f0f5ff; padding: 16px; border-radius: 8px;">
+                                        <h4 style="margin: 0 0 8px; color: #1890ff;">净增额</h4>
+                                        <p style="margin: 0; font-size: 12px; color: #666;">(外呼组增长率-对照组增长率)×管户总额</p>
+                                        <p style="margin: 4px 0 0; font-size: 11px; color: #999;">排除自然行为，反映增量价值</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>2. 漏斗分析</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                <div style="margin: 24px 0;">
+                                    <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                        <span style="width: 120px; text-align: right; padding-right: 12px; font-size: 14px; color: #666;">客群人数</span>
+                                        <div style="flex: 1; height: 40px; background: #1890ff; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; font-weight: 600;">10,000</div>
+                                    </div>
+                                    <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                        <span style="width: 120px; text-align: right; padding-right: 12px; font-size: 14px; color: #666;">接通人数</span>
+                                        <div style="flex: 1; height: 32px; background: #40a9ff; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 14px;">6,500 (65%)</div>
+                                    </div>
+                                    <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                        <span style="width: 120px; text-align: right; padding-right: 12px; font-size: 14px; color: #666;">有效触达</span>
+                                        <div style="flex: 1; height: 24px; background: #73d13d; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px;">5,500 (85%)</div>
+                                    </div>
+                                    <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                        <span style="width: 120px; text-align: right; padding-right: 12px; font-size: 14px; color: #666;">意向人数</span>
+                                        <div style="flex: 1; height: 20px; background: #faad14; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">1,200 (22%)</div>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <span style="width: 120px; text-align: right; padding-right: 12px; font-size: 14px; color: #666;">转化人数</span>
+                                        <div style="flex: 1; height: 16px; background: #fa8c16; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 11px;">180 (15%)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>3. 基于分析结果的迭代优化</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                <div style="display: grid; gap: 16px;">
+                                    <div style="background: #f6ffed; padding: 16px; border-radius: 8px;">
+                                        <h4 style="color: #52c41a; margin: 0 0 12px;">触达策略优化</h4>
+                                        <ul style="margin: 0; padding-left: 20px;">
+                                            <li>优先使用官方短号 → 来电名片功能</li>
+                                            <li>重呼策略优化（复用2次间隔1小时）</li>
+                                            <li>多渠道组合触达（智能外呼+企微+短信+App+人工）</li>
+                                            <li>同客户2周内1次触达</li>
+                                        </ul>
+                                    </div>
+                                    <div style="background: #f6ffed; padding: 16px; border-radius: 8px;">
+                                        <h4 style="color: #52c41a; margin: 0 0 12px;">客筛策略优化</h4>
+                                        <ul style="margin: 0; padding-left: 20px;">
+                                            <li>调整标签参数取值（如余额宝转入≥3000元）</li>
+                                            <li>增减规则内容</li>
+                                            <li>案例：转化率从5.89%提升至7.03%（+1.14%）</li>
+                                        </ul>
+                                    </div>
+                                    <div style="background: #f6ffed; padding: 16px; border-radius: 8px;">
+                                        <h4 style="color: #52c41a; margin: 0 0 12px;">客户数据治理</h4>
+                                        <ul style="margin: 0; padding-left: 20px;">
+                                            <li>收集空号/黑名单/错号定期回传行方</li>
+                                            <li>客筛阶段提前排除</li>
+                                            <li>提高线路利用率</li>
+                                        </ul>
+                                    </div>
+                                    <div style="background: #f6ffed; padding: 16px; border-radius: 8px;">
+                                        <h4 style="color: #52c41a; margin: 0 0 12px;">ABTest优化</h4>
+                                        <ul style="margin: 0; padding-left: 20px;">
+                                            <li>原则：每次测试变量唯一，数据驱动</li>
+                                            <li>流程：漏斗分析定位可优化点 → 改进设计 → 执行测试 → 效果对比 → 总结推广应用</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 总结沉淀 -->
+                <section class="ng-section" id="section-summary">
+                    <div class="ng-section-header">
+                        <div class="ng-section-icon">📝</div>
+                        <h2 class="ng-section-title">总结沉淀</h2>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>1. 优秀话术沉淀至货架</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                适时将话术和意图打包回流至外呼运营案例货架，做到资源回流和集中管理。
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>2. 输出方法论</h3>
+                        </div>
+                        <div class="ng-card">
+                            <div class="ng-card-content">
+                                基于运营方案与数据关系总结——各场景客群特点与客筛思路、话术设计思路与方法、转化率提升策略、高效数据标签治理方法。
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ng-subsection">
+                        <div class="ng-toolbar">
+                            <h3>核心理念</h3>
+                        </div>
+                        <div class="ng-card" style="background: linear-gradient(135deg, #e6f7ff 0%, #f0f9ff 100%);">
+                            <div class="ng-card-content" style="background: none;">
+                                <div style="font-size: 18px; font-weight: 600; color: #1890ff; margin-bottom: 16px; text-align: center;">
+                                    🌟 核心理念 🌟
+                                </div>
+                                <div style="font-size: 16px; line-height: 1.8; text-align: center; color: #333;">
+                                    在不断的思考、总结、输出过程中提升自己，<br>
+                                    同时也将无形的宝贵经验和资产传递下去。<br><br>
+                                    存客运营以精细化的千人千面运营方案，<br>
+                                    助力银行将长尾客户逐渐转化为高价值客户，<br>
+                                    形成"客户—用户—核心用户"的转化路线。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+                    </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>运营工作台 — 持续更新中</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+
+    <script>
+        // 导航点击事件
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // 移除所有active类
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                // 添加active类到当前项
+                this.classList.add('active');
+
+                // 滚动到对应章节
+                const sectionId = this.dataset.section;
+                const section = document.getElementById(`section-${sectionId}`);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // 响应式处理
+        function handleResize() {
+            const width = window.innerWidth;
+            const sidebar = document.querySelector('.ng-sidebar-nav');
+
+            if (width <= 991) {
+                sidebar.style.position = 'static';
+            } else {
+                sidebar.style.position = 'sticky';
+                sidebar.style.top = '80px';
+            }
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); // 初始化
+    </script>
+</body>
+</html>

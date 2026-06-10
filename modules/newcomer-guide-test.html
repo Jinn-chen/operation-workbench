@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新手指南测试版 — 业务运营中心帮助中心</title>
+    <style>
+        /* 基础样式 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            color: #333;
+            background: #f5f7fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #1890ff;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .left-nav {
+            position: fixed;
+            left: 20px;
+            top: 100px;
+            width: 200px;
+            background: white;
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .nav-item {
+            padding: 8px 12px;
+            margin: 4px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .nav-item:hover {
+            background: #1890ff;
+            color: white;
+        }
+        .nav-item.active {
+            background: #1890ff;
+            color: white;
+        }
+        .right-panel {
+            position: fixed;
+            right: 20px;
+            top: 100px;
+            width: 280px;
+            background: white;
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .main-content {
+            margin-left: 240px;
+            margin-right: 320px;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #e8e8e8;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #f5f7fa;
+            font-weight: 600;
+        }
+        .funnel {
+            margin: 30px 0;
+        }
+        .funnel-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        .funnel-bar {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        .funnel-bar:hover {
+            transform: scaleX(1.02);
+        }
+        .funnel-label {
+            width: 120px;
+            text-align: right;
+            padding-right: 12px;
+        }
+        .funnel-value {
+            margin-left: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📖 存客运营新人指导书</h1>
+        <p><strong>版本：V1.0</strong> | 产品运营部 | 2023年6月</p>
+    </div>
+
+    <!-- 左侧导航 -->
+    <div class="left-nav">
+        <h3>目录</h3>
+        <div id="navigation">
+            <div class="nav-item" data-section="overview">📖 前言与概述</div>
+            <div class="nav-item" data-section="phase1">🔍 需求调研</div>
+            <div class="nav-item" data-section="phase2">🎯 客筛范围圈定</div>
+            <div class="nav-item" data-section="phase3">✏️ 交互方案设计</div>
+            <div class="nav-item" data-section="phase4">🤖 机器人搭建</div>
+            <div class="nav-item" data-section="phase5">🔧 调优与上线</div>
+            <div class="nav-item" data-section="phase6">📊 呼前数据处理</div>
+            <div class="nav-item" data-section="phase7">📋 外呼执行</div>
+            <div class="nav-item" data-section="phase8">📈 数据分析优化</div>
+            <div class="nav-item" data-section="summary">📝 总结沉淀</div>
+        </div>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="main-content" id="mainContent">
+        <div id="section-overview" class="card">
+            <h2>前言与概述</h2>
+            <h3>什么是存量客户运营</h3>
+            <p>银行存量客户是指银行已有的客户群体。调查显示，银行对存量客户进行挖掘经营的<strong>转化成本远低于获新客的成本</strong>。</p>
+
+            <h3>常见存客经营场景</h3>
+            <table>
+                <tr><th>场景</th><th>说明</th></tr>
+                <tr><td>手机银行促活</td><td>通过活动权益推送激发用户登录手机银行的意愿和次数</td></tr>
+                <tr><td>资产提升</td><td>通过系列手段提升客户在银行的资产持有量</td></tr>
+                <tr><td>信用卡经营</td><td>包括信用卡获新客、促激活、分期等场景</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 右侧面板 -->
+    <div class="right-panel">
+        <h3>📊 数据分析工具</h3>
+        <p>前往数据分析工具执行实际的漏斗分析、流失分析等功能。</p>
+        <a href="data-analysis.html" style="display: inline-block; background: #1890ff; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; margin-top: 10px;">进入工具</a>
+    </div>
+
+    <script>
+        // 内容数据
+        const content = {
+            overview: {
+                title: '前言与概述',
+                sections: [
+                    {
+                        title: '什么是存量客户运营',
+                        content: '银行存量客户是指银行已有的客户群体。调查显示，银行对存量客户进行挖掘经营的<strong>转化成本远低于获新客的成本</strong>。存量客户具有基数大、信息完善度好、维系运营方便等特征，具有较高的潜力挖掘价值。'
+                    }
+                ]
+            },
+            phase1: {
+                title: '一、需求调研',
+                sections: [
+                    {
+                        title: '1. 明确客户目标',
+                        content: '与客户充分沟通，了解推广目标和预期效果，再制定对应的运营策略。以手机银行促活为例，需了解月活/年活目标，再拆分为细项指标执行。'
+                    },
+                    {
+                        title: '2. 调查当前业务指标',
+                        content: '了解当前业务状态的关键指标：客群规模、外呼总量、外呼频率、消保流程等。'
+                    }
+                ]
+            },
+            phase8: {
+                title: '八、数据分析与迭代优化',
+                sections: [
+                    {
+                        title: '核心指标',
+                        type: 'metrics',
+                        data: [
+                            { name: '接通率', formula: '触达人数/呼叫客群数', desc: '影响因素：号码资源、客群质量、呼叫号码、时间' },
+                            { name: '转化率', formula: '达标人数/触达人数', desc: '越高显示客筛越精准、话术设计越优质' }
+                        ]
+                    },
+                    {
+                        title: '漏斗分析',
+                        type: 'funnel',
+                        data: {
+                            stages: ['客群人数', '接通人数', '意向人数', '转化人数'],
+                            values: [10000, 6500, 5500, 180]
+                        }
+                    }
+                ]
+            }
+        };
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 导航点击事件
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const sectionId = this.dataset.section;
+                    showSection(sectionId);
+
+                    // 更新激活状态
+                    document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // 显示默认章节
+            showSection('overview');
+            document.querySelector('[data-section="overview"]').classList.add('active');
+        });
+
+        function showSection(sectionId) {
+            const section = content[sectionId];
+            const mainContent = document.getElementById('mainContent');
+
+            let html = `<div class="card"><h2>${section.title}</h2>`;
+
+            if (section.sections) {
+                section.sections.forEach(sub => {
+                    if (sub.type === 'metrics') {
+                        // 渲染指标卡片
+                        html += '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0;">';
+                        sub.data.forEach(metric => {
+                            html += `
+                                <div style="background: #f5f7fa; border-radius: 8px; padding: 16px; border-left: 3px solid #1890ff;">
+                                    <h4>${metric.name}</h4>
+                                    <p style="color: #666; margin: 8px 0;">${metric.formula}</p>
+                                    <p style="color: #999; font-size: 12px;">${metric.desc}</p>
+                                </div>
+                            `;
+                        });
+                        html += '</div>';
+                    } else if (sub.type === 'funnel') {
+                        // 渲染漏斗图
+                        const maxValue = Math.max(...sub.data.values);
+                        html += '<div class="funnel">';
+                        html += '<h4>漏斗分析</h4>';
+                        sub.data.stages.forEach((stage, index) => {
+                            const value = sub.data.values[index];
+                            const percent = Math.round((value / maxValue) * 100);
+                            const colors = ['#1890ff', '#40a9ff', '#73d13d', '#faad14'];
+                            const color = colors[index % colors.length];
+
+                            html += `
+                                <div class="funnel-step">
+                                    <span class="funnel-label">${stage}</span>
+                                    <div class="funnel-bar" style="width: ${percent}%; background: ${color};">
+                                        <span style="margin: 0 8px;">${value.toLocaleString()}</span>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        html += '</div>';
+                    } else {
+                        // 普通内容
+                        html += `<h3>${sub.title}</h3><p>${sub.content}</p>`;
+                    }
+                });
+            }
+
+            html += '</div>';
+            mainContent.innerHTML = html;
+        }
+    </script>
+</body>
+</html>

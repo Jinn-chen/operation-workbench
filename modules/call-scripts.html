@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外呼话术货架 — 运营工作台</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../index.html" class="logo">
+                            <img src="../images/logo.png" alt="运营工作台" class="logo-image">
+                        </a>
+            <nav class="main-nav" id="mainNav">
+                <button class="nav-toggle" id="navToggle" aria-label="菜单">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="../index.html">首页</a></li>
+                    <li><a href="newcomer-guide.html">新手指南</a></li>
+                    <li><a href="call-scripts.html" class="active">外呼话术货架</a></li>
+                    <li><a href="operation-strategies.html">运营策略集</a></li>
+                    <li><a href="data-analysis.html">数据分析工具</a></li>
+                    <li><a href="related-products.html">相关产品</a></li>
+                    <li><a href="operation-cases.html">运营案例</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="module-page">
+        <div class="breadcrumb">
+            <a href="../index.html">首页</a> &rsaquo; <span>外呼话术货架</span>
+        </div>
+        <div class="module-layout">
+            <aside class="module-sidebar">
+                <h3>目录</h3>
+                <ul>
+                    <li><a href="#overview" class="first-link">话术体系总览</a></li>
+                    <li><a href="#opening">开场白话术</a></li>
+                    <li><a href="#product-intro">产品介绍话术</a></li>
+                    <li><a href="#objection-handling">异议处理话术</a></li>
+                    <li><a href="#closing">促成收尾话术</a></li>
+                    <li><a href="#follow-up">跟进维护话术</a></li>
+                    <li><a href="#tips">话术技巧与原则</a></li>
+                </ul>
+            </aside>
+            <article class="module-content" id="moduleContent">
+
+                <h1>外呼话术货架</h1>
+                <p>系统化整理外呼场景的标准话术，涵盖开场、产品介绍、异议处理、促成、跟进全流程。新人可直接参照使用，熟手可在此基础上灵活调整。</p>
+
+                <!-- 资源复用机器人入口 -->
+                <div class="ai-assistant-card">
+                    <div class="ai-header">
+                        <div class="ai-icon">🤖</div>
+                        <div class="ai-info">
+                            <h3>资源复用机器人</h3>
+                            <p>资源复用小助手，可以快速帮你找到沉淀的语义及话术资源</p>
+                        </div>
+                    </div>
+                    <a href="https://flames.iflytek.com:2443/agent/agents-share-web/#/assistant/share/bfaea27bf3c84bf4ba7d6939f0bf474f/k5jI" target="_blank" class="ai-button">
+                        <span>立即使用</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </div>
+
+                <script>
+                    // 在外呼话术货架页面添加资源复用机器人样式
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const style = document.createElement('style');
+                        style.textContent = `
+                            .ai-assistant-card {
+                                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                border-radius: 16px;
+                                padding: 32px;
+                                margin: 32px 0;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                gap: 24px;
+                                box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+                                border: 1px solid rgba(255, 255, 255, 0.2);
+                                color: white;
+                                position: relative;
+                                overflow: hidden;
+                            }
+
+                            .ai-assistant-card::before {
+                                content: '';
+                                position: absolute;
+                                top: -50%;
+                                right: -50%;
+                                width: 200%;
+                                height: 200%;
+                                background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+                                animation: pulse 4s ease-in-out infinite;
+                            }
+
+                            @keyframes pulse {
+                                0%, 100% { transform: scale(1); opacity: 0.5; }
+                                50% { transform: scale(1.1); opacity: 0.8; }
+                            }
+
+                            .ai-header {
+                                display: flex;
+                                align-items: center;
+                                gap: 16px;
+                                z-index: 1;
+                            }
+
+                            .ai-icon {
+                                width: 64px;
+                                height: 64px;
+                                background: rgba(255, 255, 255, 0.2);
+                                border-radius: 16px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 32px;
+                                backdrop-filter: blur(10px);
+                            }
+
+                            .ai-info h3 {
+                                margin: 0 0 8px 0;
+                                font-size: 24px;
+                                font-weight: 600;
+                            }
+
+                            .ai-info p {
+                                margin: 0;
+                                font-size: 16px;
+                                opacity: 0.9;
+                            }
+
+                            .ai-description {
+                                flex: 1;
+                                margin: 0 32px;
+                                z-index: 1;
+                            }
+
+                            .ai-description p {
+                                margin: 0;
+                                font-size: 16px;
+                                line-height: 1.6;
+                                opacity: 0.95;
+                            }
+
+                            .ai-button {
+                                background: white;
+                                color: #667eea;
+                                padding: 12px 32px;
+                                border-radius: 12px;
+                                text-decoration: none;
+                                font-weight: 600;
+                                display: inline-flex;
+                                align-items: center;
+                                gap: 8px;
+                                transition: all 0.3s ease;
+                                z-index: 1;
+                                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+                                white-space: nowrap;
+                            }
+
+                            .ai-button:hover {
+                                transform: translateY(-2px);
+                                box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+                                color: #5a67d8;
+                            }
+
+                            @media (max-width: 768px) {
+                                .ai-assistant-card {
+                                    flex-direction: column;
+                                    text-align: center;
+                                }
+
+                                .ai-header {
+                                    flex-direction: column;
+                                }
+
+                                .ai-description {
+                                    margin: 0 0 24px 0;
+                                }
+                            }
+                        `;
+                        document.head.appendChild(style);
+                    });
+                </script>
+
+                <h2 id="overview">话术体系总览</h2>
+                <p>外呼话术按客户沟通阶段分为五大类。每个场景下提供多套话术模板，可根据客户类型、产品、场景灵活选用。</p>
+                <table>
+                    <thead>
+                        <tr><th>阶段</th><th>目标</th><th>关键要点</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>开场白</td><td>建立联系、引起兴趣</td><td>自报家门、说明来意、控制在30秒内</td></tr>
+                        <tr><td>产品介绍</td><td>传递价值、匹配需求</td><td>突出核心卖点、用客户语言表达</td></tr>
+                        <tr><td>异议处理</td><td>化解疑虑、建立信任</td><td>先认同再引导、提供证据支撑</td></tr>
+                        <tr><td>促成收尾</td><td>确认意向、推进下一步</td><td>趁热打铁、明确行动项</td></tr>
+                        <tr><td>跟进维护</td><td>持续触达、巩固关系</td><td>有理由跟进、传递价值信息</td></tr>
+                    </tbody>
+                </table>
+
+                <h2 id="opening">开场白话术</h2>
+                <h3>标准开场</h3>
+                <blockquote>您好，请问是 [客户姓名] [客户称谓] 吗？我是 [公司名称] 的 [姓名]，今天联系您主要是想跟您聊聊 [核心话题]。</blockquote>
+                <h3>活动邀约开场</h3>
+                <blockquote>[客户称谓] 您好，我是 [公司名称] 的 [姓名]。我们近期有一个 [活动类型]，看到您之前对 [相关领域] 比较感兴趣，想邀请您了解一下。</blockquote>
+                <p><em>更多开场白模板待补充…</em></p>
+
+                <h2 id="product-intro">产品介绍话术</h2>
+                <p><strong>FAB法则结构</strong>（Feature 属性 → Advantage 优势 → Benefit 利益）：</p>
+                <ol>
+                    <li><strong>这是什么</strong> — 用一句话讲清产品/服务</li>
+                    <li><strong>它好在哪</strong> — 与竞品或现状的差异</li>
+                    <li><strong>对您有什么用</strong> — 结合客户具体需求阐述</li>
+                </ol>
+                <p><em>各产品线话术模板待补充…</em></p>
+
+                <h2 id="objection-handling">异议处理话术</h2>
+                <p><strong>标准三步法</strong>：认同感受 → 澄清问题 → 提供方案</p>
+                <div class="info-box tip">
+                    <strong>示例 — "我不需要"：</strong><br>
+                    理解理解，很多客户一开始也是这样想的。不过我想请教一下，您目前在 [相关场景] 方面是怎么处理的呢？<br>
+                    <br>
+                    <strong>示例 — "太贵了"：</strong><br>
+                    您对价格敏感我完全理解。我们很多客户在了解之前也觉得贵，但用下来发现 [价值点]。我可以帮您简单算一下。
+                </div>
+                <p><em>更多异议场景话术待补充…</em></p>
+
+                <h2 id="closing">促成收尾话术</h2>
+                <p>核心原则：不强行关单，但每次通话都要有明确的下一步。</p>
+                <ul>
+                    <li><strong>直接促成</strong>：适合意向明确的客户</li>
+                    <li><strong>选择式促成</strong>：给客户两个选项而非是/否</li>
+                    <li><strong>铺垫式促成</strong>：为下次跟进留钩子</li>
+                </ul>
+                <p><em>详细话术模板待补充…</em></p>
+
+                <h2 id="follow-up">跟进维护话术</h2>
+                <p>跟进的核心是"有理由地再次联系"，避免让客户觉得被骚扰。</p>
+                <p><em>详细话术模板待补充…</em></p>
+
+                <h2 id="tips">话术技巧与原则</h2>
+                <ul>
+                    <li><strong>自然真诚</strong>：话术是框架，不是剧本。根据实际情况灵活调整，保持自然对话感</li>
+                    <li><strong>多听少说</strong>：优秀的沟通是 30% 说 + 70% 听</li>
+                    <li><strong>控制语速</strong>：适中的语速传递专业感，过快显紧张，过慢显生疏</li>
+                    <li><strong>及时记录</strong>：通话结束后立即记录关键信息，好记性不如烂笔头</li>
+                    <li><strong>持续优化</strong>：记录不同话术的转化效果，不断迭代</li>
+                </ul>
+
+            </article>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>运营工作台 — 持续更新中</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>相关产品 — 运营工作台</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* 产品页面样式 */
+        .product-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 24px;
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .product-icon {
+            width: 60px;
+            height: 60px;
+            background: #f0f5ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 16px;
+            color: #1890ff;
+        }
+
+        .product-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .product-desc {
+            color: #666;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .product-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .product-features li {
+            padding: 6px 0 6px 20px;
+            position: relative;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .product-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #52c41a;
+            font-weight: bold;
+        }
+
+        .quick-start {
+            background: #f0f5ff;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 16px;
+        }
+
+        .quick-start h4 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            color: #1890ff;
+        }
+
+        .quick-start p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .product-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .product-tab {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            color: #666;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .product-tab.active {
+            color: #1890ff;
+        }
+
+        .product-tab.active::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #1890ff;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../index.html" class="logo">
+                            <img src="../images/logo.png" alt="运营工作台" class="logo-image">
+                        </a>
+            <nav class="main-nav" id="mainNav">
+                <button class="nav-toggle" id="navToggle" aria-label="菜单">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="../index.html">首页</a></li>
+                    <li><a href="newcomer-guide.html">新手指南</a></li>
+                    <li><a href="call-scripts.html">外呼话术货架</a></li>
+                    <li><a href="operation-strategies.html">运营策略集</a></li>
+                    <li><a href="data-analysis.html">数据分析工具</a></li>
+                    <li><a href="related-products.html" class="active">相关产品</a></li>
+                    <li><a href="operation-cases.html">运营案例</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="module-page">
+        <div class="breadcrumb">
+            <a href="../index.html">首页</a> &rsaquo; <span>相关产品</span>
+        </div>
+        <div class="module-layout">
+            <aside class="module-sidebar">
+                <h3>产品目录</h3>
+                <ul>
+                    <li><a href="#智能外呼产品" class="first-link">智能外呼产品</a></li>
+                    <li><a href="#直营平台">直营平台</a></li>
+                    <li><a href="#企微客户营销系统">企微客户营销系统</a></li>
+                    <li><a href="#展业助手">展业助手</a></li>
+                    <li><a href="#AI营销中台">AI营销中台</a></li>
+                    <li><a href="#讯飞言知">讯飞言知</a></li>
+                </ul>
+            </aside>
+            <article class="module-content" id="moduleContent">
+
+                <h1>相关产品</h1>
+                <p>运营中心日常使用的核心业务系统介绍，帮助团队成员快速了解各系统功能和操作方法。</p>
+
+                <div class="product-showcase">
+                    <!-- 智能外呼产品 -->
+                    <div class="product-card" id="智能外呼产品">
+                        <div class="product-icon">📞</div>
+                        <h2 class="product-title">智能外呼产品</h2>
+                        <p class="product-desc">基于AI技术的智能外呼系统，实现自动化客户触达、语音交互和数据分析，大幅提升外呼效率和转化率。</p>
+                        <ul class="product-features">
+                            <li>AI语音机器人自动外呼</li>
+                            <li>智能话术推荐与优化</li>
+                            <li>实时语音识别与情感分析</li>
+                            <li>客户意向度智能评估</li>
+                            <li>外呼任务智能分配</li>
+                            <li>通话录音与质检分析</li>
+                        </ul>
+                        <div class="quick-start">
+                            <h4>快速上手</h4>
+                            <p>登录后在"任务中心"创建外呼任务，选择客户群组和话术模板，系统将自动执行外呼并生成分析报告。</p>
+                        </div>
+                    </div>
+
+                    <!-- 直营平台 -->
+                    <div class="product-card" id="直营平台">
+                        <div class="product-icon">🏢</div>
+                        <h2 class="product-title">直营平台</h2>
+                        <p class="product-desc">直营业务全流程管理平台，整合客户管理、销售跟进、订单处理和业绩考核，实现直营业务数字化运营。</p>
+                        <ul class="product-features">
+                            <li>客户信息统一管理</li>
+                            <li>销售流程标准化</li>
+                            <li>订单全生命周期跟踪</li>
+                            <li>业绩自动统计与考核</li>
+                            <li>客户画像精准分析</li>
+                            <li>多渠道营销整合</li>
+                        </ul>
+                        <div class="quick-start">
+                            <h4>快速上手</h4>
+                            <p>通过"客户管理"模块查看客户信息，使用"销售跟进"功能记录沟通历史，系统将自动生成销售漏斗分析。</p>
+                        </div>
+                    </div>
+
+                    <!-- 企微客户营销系统 -->
+                    <div class="product-card" id="企微客户营销系统">
+                        <div class="product-icon">💼</div>
+                        <h2 class="product-title">企微客户营销系统</h2>
+                        <p class="product-desc">基于企业微信的私域流量运营平台，实现客户精细化运营、自动化营销和社交化销售，提升客户粘性和转化率。</p>
+                        <ul class="product-features">
+                            <li>企业微信客户管理</li>
+                            <li>自动化营销活动</li>
+                            <li>客户标签体系与分组</li>
+                            <li>社交化销售工具</li>
+                            <li>客户互动数据分析</li>
+                            <li>私域流量转化优化</li>
+                        </ul>
+                        <div class="quick-start">
+                            <h4>快速上手</h4>
+                            <p>导入客户数据后，使用"标签管理"功能进行客户分层，通过"营销活动"模块创建自动化营销流程。</p>
+                        </div>
+                    </div>
+
+                    <!-- 展业助手 -->
+                    <div class="product-card" id="展业助手">
+                        <div class="product-icon">🚀</div>
+                        <h2 class="product-title">展业助手</h2>
+                        <p class="product-desc">AI驱动的业务拓展辅助工具，通过智能推荐、客户匹配和营销素材管理，帮助销售人员高效开展业务。</p>
+                        <ul class="product-features">
+                            <li>智能客户推荐</li>
+                            <li>营销素材库管理</li>
+                            <li>销售话术智能匹配</li>
+                            <li>客户跟进提醒</li>
+                            <li>业绩目标管理</li>
+                            <li>竞品信息分析</li>
+                        </ul>
+                        <div class="quick-start">
+                            <h4>快速上手</h4>
+                            <p>在"客户推荐"页面查看系统推荐的潜在客户，使用"话术匹配"功能获取针对该客户的沟通建议。</p>
+                        </div>
+                    </div>
+
+                    <!-- AI营销中台 -->
+                    <div class="product-card" id="AI营销中台">
+                        <div class="product-icon">🤖</div>
+                        <h2 class="product-title">AI营销中台</h2>
+                        <p class="product-desc">企业级AI营销平台，整合多渠道营销、智能内容生成、数据分析和自动化营销，实现营销全链路智能化。</p>
+                        <ul class="product-features">
+                            <li>多渠道营销整合</li>
+                            <li>AI内容自动生成</li>
+                            <li>营销活动智能优化</li>
+                            <li>客户行为预测分析</li>
+                            <li>营销效果实时监控</li>
+                            <li>自动化营销流程</li>
+                        </ul>
+                        <div class="quick-start">
+                            <h4>快速上手</h4>
+                            <p>在"营销活动"模块创建新的营销活动，系统将自动推荐最佳渠道组合和内容策略，并实时监控效果。</p>
+                        </div>
+                    </div>
+
+                    <!-- 讯飞言知 -->
+                    <div class="product-card" id="讯飞言知">
+                        <div class="product-icon">🗣️</div>
+                        <h2 class="product-title">讯飞言知</h2>
+                        <p class="product-desc">基于讯飞语音技术的智能客服与知识管理系统，实现语音交互、智能问答和知识沉淀，提升客户服务效率。</p>
+                        <ul class="product-features">
+                            <li>智能语音交互</li>
+                            <li>知识库智能问答</li>
+                            <li>多轮对话管理</li>
+                            <li>语音转文字与情感分析</li>
+                            <li>客服工作台集成</li>
+                            <li>知识自动更新</li>
+                        </ul>
+                        <div class="quick-start">
+                            <h4>快速上手</h4>
+                            <p>在"知识库"模块上传常见问题解答，客户咨询时系统将自动匹配最相关的答案，支持语音和文字交互。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 系统集成说明 -->
+                <section style="margin-top: 48px;">
+                    <h2>系统集成架构</h2>
+                    <div style="background: #f8f9fa; border-radius: 12px; padding: 24px; margin: 24px 0;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 36px; margin-bottom: 12px;">🔄</div>
+                                <h3>数据互通</h3>
+                                <p style="color: #666; margin: 0;">各系统间数据实时同步，保证信息一致性</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 36px; margin-bottom: 12px;">🔐</div>
+                                <h3>统一认证</h3>
+                                <p style="color: #666; margin: 0;">单点登录，一次认证访问所有系统</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 36px; margin-bottom: 12px;">📡</div>
+                                <h3>开放接口</h3>
+                                <p style="color: #666; margin: 0;">提供标准API，支持第三方系统集成</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </article>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>运营工作台 — 持续更新中</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // 侧边栏导航高亮
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentHash = window.location.hash;
+            const sidebarLinks = document.querySelectorAll('.module-sidebar a');
+
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (currentHash && link.getAttribute('href') === currentHash) {
+                    link.classList.add('active');
+                }
+            });
+
+            // 点击侧边栏滚动到对应位置
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetId) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // 更新URL hash
+                        window.history.pushState(null, '', '#' + targetId);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
